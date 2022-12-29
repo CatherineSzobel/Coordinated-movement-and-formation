@@ -26,21 +26,28 @@ void APC_Main::MakeFormation(FVector rightClick, TArray<AActor*> units)
 	switch (formationType)
 	{
 	case StraightLineVerticalRight:
-		GEngine->AddOnScreenDebugMessage(1, 10.f, FColor::Black, "1");
 		for (AActor* unit : units)
 		{
 			CreateFormationArray(LineRight());
-			GEngine->AddOnScreenDebugMessage(1, 10.f, FColor::Black, "1");
 		}
 		break;
 	case StraightLineVerticalLeft:
-		ArrayInput = LineLeft();
+		for (AActor* unit : units)
+		{
+			CreateFormationArray(LineLeft());
+		}
 		break;
 	case StraightLineHorizontalUp:
-		ArrayInput = LineUp();
+		for (AActor* unit : units)
+		{
+			CreateFormationArray(LineUp());
+		}
 		break;
 	case StraightLineHorizontalDown:
-		ArrayInput = LineDown();
+		for (AActor* unit : units)
+		{
+			CreateFormationArray(LineDown());
+		}
 		break;
 	}
 	
