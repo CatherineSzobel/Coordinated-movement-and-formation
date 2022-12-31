@@ -35,11 +35,14 @@ public:
 	//UPROPERTY(BlueprintReadWrite, Category = Unit)
 	//	TArray<AActor*> Units;
 
-	UPROPERTY(BlueprintReadWrite, Category = Position)
+	UPROPERTY(BlueprintReadWrite, Category = "Position")
 		FVector NewPosition;
 
-	UPROPERTY(BlueprintReadWrite, Category = Position)
+	UPROPERTY(BlueprintReadWrite, Category = "Position")
 		TEnumAsByte<FormationType> formationType;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Units")
+		int AmountOfUnits;
 
 	UFUNCTION(BlueprintCallable, Category = "Formation")
 		void CreateFormationArray(FVector input);
