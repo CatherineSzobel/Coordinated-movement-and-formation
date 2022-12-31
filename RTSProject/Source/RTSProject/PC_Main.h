@@ -46,6 +46,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Formation")
 		void CreateFormationArray(FVector input);
+	UPROPERTY(BlueprintReadWrite)
+		bool ChangeToRight = false;
 private:
 
 	FVector ArrayInput;
@@ -57,4 +59,9 @@ private:
 		FVector LineUp();
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 		FVector LineDown();
+
+	//UFUNCTION(BlueprintCallable)
+	//	FVector Stairs();
+	//UFUNCTION(BlueprintCallable)
+	//	FVector Square();
 };

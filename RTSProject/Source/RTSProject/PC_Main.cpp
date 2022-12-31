@@ -23,6 +23,7 @@ void APC_Main::MakeFormation(FVector rightClick, TArray<AActor*> units)
 		FormationVector.AddUnique(rightClick);
 		NewPosition = rightClick;
 	}
+
 	switch (formationType)
 	{
 	case StraightLineVerticalRight:
@@ -47,6 +48,41 @@ void APC_Main::MakeFormation(FVector rightClick, TArray<AActor*> units)
 		for (AActor* unit : units)
 		{
 			CreateFormationArray(LineDown());
+		}
+		break;
+	case Stairs:
+		for (int i = 0; i < units.Num(); i++)
+		{
+			if (((i + 1) % 2) == 0)
+			{
+				CreateFormationArray(LineUp());
+			}
+			else
+			{
+				CreateFormationArray(LineLeft());
+			}
+		}
+		break;
+	case Square:
+		for (int i = 0; i < units.Num(); i++)
+		{
+			if ((i + 1) == (units.Num() / 2))
+			{
+				CreateFormationArray(LineUp());
+				ChangeToRight = true;
+			}
+			else
+			{
+				CreateFormationArray(LineLeft());
+				if (ChangeToRight)
+				{
+					CreateFormationArray(LineRight());
+				}
+				else
+				{
+					CreateFormationArray(LineLeft());
+				}
+			}
 		}
 		break;
 	}
@@ -78,5 +114,4 @@ FVector APC_Main::LineDown()
 {
 	return FVector(NewPosition.X - 150, NewPosition.Y, NewPosition.Z);
 }
-
 
