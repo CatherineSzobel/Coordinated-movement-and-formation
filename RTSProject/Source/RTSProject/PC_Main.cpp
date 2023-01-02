@@ -64,7 +64,7 @@ void APC_Main::MakeFormation(FVector rightClick, TArray<AActor*> units)
 		}
 		break;
 	case Square:
-		for (int i = 0; i < units.Num(); i++)
+		for (int i = 0; i < units.Num(); ++i)
 		{
 			if ((i + 1) == (units.Num() / 2))
 			{
@@ -85,8 +85,15 @@ void APC_Main::MakeFormation(FVector rightClick, TArray<AActor*> units)
 			}
 		}
 		break;
+	case Circle:
+		for (int i = 0; i < units.Num(); ++i)
+		{
+			
+			CreateFormationArray(CreateCircle(i,units.Num()));
+		}
+		break;
 	}
-	
+
 }
 
 void APC_Main::CreateFormationArray(FVector input)
@@ -113,5 +120,13 @@ FVector APC_Main::LineUp()
 FVector APC_Main::LineDown()
 {
 	return FVector(NewPosition.X - 150, NewPosition.Y, NewPosition.Z);
+}
+
+FVector APC_Main::CreateCircle(int currentIdx, int totalIdx)
+{
+	float angle = currentIdx * (2.f * (PI / float(totalIdx)));
+	float sinAngle = sin(angle) * CircleRadius;
+	float cosAngle = cos(angle) * CircleRadius;
+	return FVector(NewPosition.X + cosAngle, NewPosition.Y + sinAngle, NewPosition.Z );
 }
 

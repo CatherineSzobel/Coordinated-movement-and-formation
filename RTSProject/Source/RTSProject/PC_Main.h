@@ -16,7 +16,8 @@ enum FormationType
 	StraightLineHorizontalUp,
 	StraightLineHorizontalDown,
 	Stairs,
-	Square
+	Square,
+	Circle
 };
 UCLASS()
 class RTSPROJECT_API APC_Main : public APlayerController
@@ -48,6 +49,8 @@ public:
 		void CreateFormationArray(FVector input);
 	UPROPERTY(BlueprintReadWrite)
 		bool ChangeToRight = false;
+	UPROPERTY(BlueprintReadWrite)
+		float CircleRadius = 250.f;
 private:
 
 	FVector ArrayInput;
@@ -59,9 +62,7 @@ private:
 		FVector LineUp();
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 		FVector LineDown();
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+		FVector CreateCircle(int currentIdx, int totalIdx);
 
-	//UFUNCTION(BlueprintCallable)
-	//	FVector Stairs();
-	//UFUNCTION(BlueprintCallable)
-	//	FVector Square();
 };
