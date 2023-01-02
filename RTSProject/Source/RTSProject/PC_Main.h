@@ -51,6 +51,8 @@ public:
 		bool ChangeToRight = false;
 	UPROPERTY(BlueprintReadWrite)
 		float CircleRadius = 250.f;
+	UPROPERTY(BlueprintReadWrite)
+		float UnitSpace = 80.f;
 private:
 
 	FVector ArrayInput;

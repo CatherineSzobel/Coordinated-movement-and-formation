@@ -73,10 +73,10 @@ void APC_Main::MakeFormation(FVector rightClick, TArray<AActor*> units)
 			}
 			else
 			{
-				CreateFormationArray(LineLeft());
 				if (ChangeToRight)
 				{
 					CreateFormationArray(LineRight());
+
 				}
 				else
 				{
@@ -84,6 +84,7 @@ void APC_Main::MakeFormation(FVector rightClick, TArray<AActor*> units)
 				}
 			}
 		}
+		ChangeToRight = false;
 		break;
 	case Circle:
 		for (int i = 0; i < units.Num(); ++i)
@@ -104,22 +105,22 @@ void APC_Main::CreateFormationArray(FVector input)
 
 FVector APC_Main::LineLeft()
 {
-	return FVector(NewPosition.X, NewPosition.Y - 150.f, NewPosition.Z);
+	return FVector(NewPosition.X, NewPosition.Y - UnitSpace, NewPosition.Z);
 }
 
 FVector APC_Main::LineRight()
 {
-	return FVector(NewPosition.X, NewPosition.Y + 150.f, NewPosition.Z);
+	return FVector(NewPosition.X, NewPosition.Y + UnitSpace, NewPosition.Z);
 }
 
 FVector APC_Main::LineUp()
 {
-	return FVector(NewPosition.X + 150, NewPosition.Y, NewPosition.Z);
+	return FVector(NewPosition.X + UnitSpace, NewPosition.Y, NewPosition.Z);
 }
 
 FVector APC_Main::LineDown()
 {
-	return FVector(NewPosition.X - 150, NewPosition.Y, NewPosition.Z);
+	return FVector(NewPosition.X - UnitSpace, NewPosition.Y, NewPosition.Z);
 }
 
 FVector APC_Main::CreateCircle(int currentIdx, int totalIdx)
