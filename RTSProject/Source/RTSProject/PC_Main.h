@@ -53,6 +53,7 @@ public:
 		float CircleRadius = 250.f;
 	UPROPERTY(BlueprintReadWrite)
 		float UnitSpace = 80.f;
+	void SetUpInputComponent();
 private:
 
 	FVector ArrayInput;

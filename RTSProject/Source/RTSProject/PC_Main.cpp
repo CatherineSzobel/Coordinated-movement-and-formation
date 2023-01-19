@@ -7,7 +7,7 @@ void APC_Main::CallFormation()
 {
 	for (FVector& unitPosition : FormationVector)
 	{
-		DrawDebugCircle(GetWorld(), unitPosition, 10.f, 12, FColor::Black, false, 20.f);
+		DrawDebugCircle(GetWorld(), unitPosition, 10.f, 12, FColor::Black, false, 2.f);
 	}
 }
 
@@ -101,6 +101,11 @@ void APC_Main::CreateFormationArray(FVector input)
 {
 	FormationVector.AddUnique(input);
 	NewPosition.Set(input.X, input.Y, input.Z);
+}
+
+void APC_Main::SetUpInputComponent()
+{
+
 }
 
 FVector APC_Main::LineLeft()
